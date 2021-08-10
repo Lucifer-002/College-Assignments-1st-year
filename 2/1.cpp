@@ -10,4 +10,5 @@ int main(){
 	printf("%f is the biggest number",num2);
 	else if(num3>num1&&num3>num1)
 	printf("%f is the biggest number",num3);
+	printf("\nThank you");
 }
