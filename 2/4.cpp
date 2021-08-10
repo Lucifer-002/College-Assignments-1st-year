@@ -1,22 +1,34 @@
 /*quadric Equation
 (b)^2-4*a*c>0; roots are real & distinct.
 (b)^2-4*a*c<0; the roots are imaginary.*/
-#include<stdio.h>
-#include<math.h>
-int main ()
-{
-float a,b,c,x1,x2,quaed;
-printf(" the equation is {a*pow(x,2)}+{b*x}+c=0\n enter thevalue of a,b,c\n",a,b,c);
+#include <math.h>
+#include <stdio.h>
+int main() {
+    double a, b, c, discriminant, root1, root2, realPart, imagPart;
+    printf("Enter coefficients a, b and c: ");
+    scanf("%lf %lf %lf", &a, &b, &c);
 
-scanf("%f%f%f",&a,&b,&c);
-quaed=(pow(b,2)-4*a*c);
-x1=(-b+sqrt(quaed))/2*a;
-x2=(-b-sqrt(quaed))/2*a;
-if(quaed==0)
-printf(" roots are real and equal\n value of x1,x2 is %f%f",x1,x2 );
-else if (quaed>0)
-printf("roots are real and unequal \n value of x1,x2 is %f%f",x1,x2);
-else if(quaed<0)
-printf("roots are imaginary\n value of x1,x2 is%f%f",x1,x2);
-return 0;
-}
+    discriminant = b * b - 4 * a * c;
+
+    // condition for real and different roots
+    if (discriminant > 0) {
+        root1 = (-b + sqrt(discriminant)) / (2 * a);
+        root2 = (-b - sqrt(discriminant)) / (2 * a);
+        printf("root1 = %.2lf and root2 = %.2lf", root1, root2);
+    }
+
+    // condition for real and equal roots
+    else if (discriminant == 0) {
+        root1 = root2 = -b / (2 * a);
+        printf("root1 = root2 = %.2lf;", root1);
+    }
+
+    // if roots are not real
+    else {
+        realPart = -b / (2 * a);
+        imagPart = sqrt(-discriminant) / (2 * a);
+        printf("root1 = %.2lf+%.2lfi and root2 = %.2f-%.2fi", realPart, imagPart, realPart, imagPart);
+    }
+
+    return 0;
+} 
